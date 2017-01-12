@@ -4,18 +4,19 @@ import ReactDOM from 'react-dom'
 class SearchBar extends Component {
   constructor(props){
     super(props);
-
-    this.state = {term: ''};
+    this.onSearchTermChange = props.onSearchTermChange;
   }
   render(){
     return (
-      <div>
+      <div className="search-bar">
         <input 
-          value = {this.state.term}
-          onChange={event =>this.setState({term: event.target.value})}/>
-        Value of input: {this.state.term}
+          onChange={event =>this.onInputChange(event.target.value)}/>
       </div>
     );
+  }
+
+  onInputChange(term) {
+    this.onSearchTermChange(term);
   }
 }
 
